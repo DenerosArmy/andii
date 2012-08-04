@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="landscape">
+                
+    <Button
+    	android:id="@+id/buttonA_send"
+    	android:layout_width="100sp"
+    	android:layout_height="100sp"
+    	android:onClick="pressA"
+    	android:layout_alignParentRight = "true"
+    	android:layout_marginRight="40sp"
+    	android:layout_marginTop="45sp"
+    	android:background="@drawable/button_a"  />
+    
+    <Button
+    	android:id="@+id/buttonB_send"
+    	android:layout_width="100sp"
+    	android:layout_height="100sp"
+    	android:onClick="pressB"
+    	android:layout_alignParentRight = "true"
+    	android:layout_marginRight="125sp"
+    	android:layout_marginTop="155sp"
+    	android:background="@drawable/button_b"  />
+    
+    <Button 
+        android:id="@+id/buttonUp_send"
+        android:layout_width="130sp"
+        android:layout_height="80sp"
+        android:onClick="pressUp"
+        android:layout_alignParentLeft = "true"
+        android:layout_marginLeft = "74sp"
+        android:layout_marginTop = "24sp"
+        android:background="@drawable/button_up" />
+
+    <Button 
+        android:id="@+id/buttonLeft_send"
+        android:layout_width="80sp"
+        android:layout_height="130sp"
+        android:onClick="pressLeft"
+        android:layout_alignParentLeft = "true"
+        android:layout_marginLeft = "18sp"
+        android:layout_marginTop = "80sp"
+        android:background="@drawable/button_left" />    
+    
+    <Button 
+        android:id="@+id/buttonDown_send"
+        android:layout_width="130sp"
+        android:layout_height="80sp"
+        android:onClick="pressDown"
+        android:layout_alignParentLeft = "true"
+        android:layout_marginLeft = "74sp"
+        android:layout_marginTop = "186sp"
+        android:background="@drawable/button_down" />
+
+    <Button 
+        android:id="@+id/buttonRight_send"
+        android:layout_width="80sp"
+        android:layout_height="130sp"
+        android:onClick="pressRight"
+        android:layout_alignParentLeft = "true"
+        android:layout_marginLeft = "180sp"
+        android:layout_marginTop = "80sp"
+        android:background="@drawable/button_right" />
+    
+     <ImageView
+      	android:layout_width="82sp"
+      	android:layout_height="82sp"
+      	android:layout_alignParentLeft = "true"
+      	android:layout_marginLeft = "98sp"
+      	android:layout_marginTop = "104sp"
+      	android:src="@drawable/center"/>
+
+</RelativeLayout>
