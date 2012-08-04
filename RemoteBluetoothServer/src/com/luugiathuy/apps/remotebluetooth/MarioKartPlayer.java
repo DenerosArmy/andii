@@ -25,12 +25,12 @@ public class MarioKartPlayer extends Player {
 
         if (delY > 0){
           System.out.println(RIGHT);
-          player.keyRelease(LEFT);
           player.keyPress(RIGHT);
+          player.keyRelease(RIGHT);
         }else{
           System.out.println(LEFT);
-          player.keyRelease(RIGHT);
           player.keyPress(LEFT);
+          player.keyRelease(LEFT);
         }
       }
       //if (Math.abs(delX) > xTHRES){
