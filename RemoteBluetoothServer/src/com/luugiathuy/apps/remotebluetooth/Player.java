@@ -79,8 +79,10 @@ public abstract class Player {
     System.out.println("acclset");
     acclCallb = true;
   }
+  
+  public String previousKey = "";
 
-  protected void pressButton(String key){
+  protected void pressButton(String key) throws InterruptedException{
     int keyi = 0;
     if (key.equals("up")){
       keyi = UP;
@@ -98,7 +100,8 @@ public abstract class Player {
       keyi = START;
     }
     player.keyPress(keyi);
-    player.keyRelease(keyi);
+    //Thread.sleep(1000);
+    //player.keyRelease(keyi);
   }
 
 	protected void updateGyro(float newX, float newY, float newZ){}

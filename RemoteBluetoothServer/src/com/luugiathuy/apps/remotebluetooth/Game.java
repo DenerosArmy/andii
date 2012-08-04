@@ -45,7 +45,7 @@ public class Game{
     getPlayerByID(commands[0]).setAcclOffset(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]));
   }
 
-  protected void sendButtonPressToPlayer(String command) throws AWTException{
+  protected void sendButtonPressToPlayer(String command) throws AWTException, InterruptedException{
     String[] commands = command.split(",");
     if (!players.containsKey(commands[0])){
       addPlayer(commands[0] + ",derp");
