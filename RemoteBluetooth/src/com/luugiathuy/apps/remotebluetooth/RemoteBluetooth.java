@@ -63,7 +63,8 @@ public class RemoteBluetooth extends Activity implements SensorEventListener {
     // Key names received from the BluetoothCommandService Handler
     public static final String DEVICE_NAME = "device_name";
     public static final String TOAST = "toast";
-    public static boolean FIRST = true;
+    public static boolean FIRSTACCEL = true;
+    public static boolean FIRSTGYRO = true;
 	
 	// Name of the connected device
     private String mConnectedDeviceName = null;
@@ -125,68 +126,55 @@ public class RemoteBluetooth extends Activity implements SensorEventListener {
 		sensorManager.registerListener(this,
 				sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
 				SensorManager.SENSOR_DELAY_GAME);
+		
+		sensorManager.registerListener(this,
+				sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE),
+				SensorManager.SENSOR_DELAY_GAME);
 	}
 	
 	 
     public void pressA(View view) {
-		mCommandService.write("sent a".getBytes());
+    	writeShit(mBluetoothAdapter.getAddress() + ",a");
     	Log.d("lol","lolol sent a");
     	v.vibrate(100);
     }
     
     public void pressB(View view) {
-    	writeShit("b");
+    	writeShit(mBluetoothAdapter.getAddress() + ",b");
     	Log.d("lol","lolol sent b");
     	v.vibrate(100);
 
     }
 
     public void pressRight(View view) {
-    	writeShit("right");
+    	writeShit(mBluetoothAdapter.getAddress() + ",right");
     	Log.d("lol","lolol sent right");
     	v.vibrate(100);
 
     }
 
     public void pressDown(View view) {
-    	writeShit("down");
+    	writeShit(mBluetoothAdapter.getAddress() + ",down");
     	Log.d("lol","lolol sent down");
     	v.vibrate(100);
 
     }
 
     public void pressLeft(View view) {
-    	writeShit("left");
+    	writeShit(mBluetoothAdapter.getAddress() + ",left");
     	Log.d("lol","lolol sent left");
     	v.vibrate(100);
 
     }
     
     public void pressUp(View view) {
-    	writeShit("up");
+    	writeShit(mBluetoothAdapter.getAddress() + ",up;");
     	Log.d("lol","lolol sent up");
     	v.vibrate(100);
 
     }
 	
-	 /**
-     * Sends a message.
-     * @param message  A string of text to send.
-     */
-
-private void initializeGame() {
-    	
-		sensorManager=(SensorManager)getSystemService(SENSOR_SERVICE);
-		// add listener. The listener will be HelloAndroid (this) class
-		sensorManager.registerListener(this,
-				sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-				SensorManager.SENSOR_DELAY_GAME);
-
-    	
-     
-    }
-
-private final void setStatus(int resId) {
+	 private final void setStatus(int resId) {
     final ActionBar actionBar = getActionBar();
     actionBar.setSubtitle(resId);
 }
@@ -360,9 +348,10 @@ private final void setStatus(CharSequence subTitle) {
 			float y=event.values[1];
 			float z=event.values[2];	
 			
-			if (FIRST) {
-				String sendString = mBluetoothAdapter.getAddress() + "," + mBluetoothAdapter.getName() + "," + event.values[0] + "," + event.values[1] + "," + event.values[2] + ";";
+			if (FIRSTACCEL) {
+				String sendString = mBluetoothAdapter.getAddress() + "," + mBluetoothAdapter.getName() + "," + event.values[0] + "," + event.values[1] + "," + event.values[2] + "?";
 				mCommandService.write(sendString.getBytes());
+				FIRSTACCEL = false;
 				return;
 			}
 			
@@ -372,20 +361,25 @@ private final void setStatus(CharSequence subTitle) {
 						
 			mCommandService.write(sendString.getBytes());
 
-			 ConnectedThread r;
-		        // Synchronize a copy of the ConnectedThread
-		        synchronized (this) {
-		            if (mState != STATE_CONNECTED) return;
-		            r = mConnectedThread;
-		        }
-		        // Perform the write unsynchronized
-		        
-		        String string = x + "," + y + "," + z;
-		        r.write(string.getBytes());
 
 			//xCoor.setText("X: "+x);
 			//yCoor.setText("Y: "+y);
 			//zCoor.setText("Z: "+z);
+		} else if (event.sensor.getType() == Sensor.TYPE_GYROSCOPE) {
+			if (FIRSTGYRO) {
+				String sendString = mBluetoothAdapter.getAddress() + "," + mBluetoothAdapter.getName() + "," + event.values[0] + "," + event.values[1] + "," + event.values[2] + "#";
+				mCommandService.write(sendString.getBytes());
+				FIRSTGYRO = false;
+				return;
+			} 
+			
+			
+			String sendString = mBluetoothAdapter.getAddress() + " " + event.values[0] + "," + event.values[1] + "," + event.values[2] + "&";
+			
+			Log.d("asdf",sendString);
+						
+			mCommandService.write(sendString.getBytes());
+			
 		}
 		   /**
 	     * This thread runs during a connection with a remote device.
