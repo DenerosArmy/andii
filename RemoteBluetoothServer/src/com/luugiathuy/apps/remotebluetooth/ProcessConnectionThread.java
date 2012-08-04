@@ -15,8 +15,7 @@ public class ProcessConnectionThread implements Runnable{
 	private static final int KEY_RIGHT = 1;
 	private static final int KEY_LEFT = 2;
 	
-	public ProcessConnectionThread(StreamConnection connection)
-	{
+	public ProcessConnectionThread(StreamConnection connection){
 		mConnection = connection;
 	}
 	
@@ -32,15 +31,15 @@ public class ProcessConnectionThread implements Runnable{
 	        
 	        while (true) {
 	        	int command = inputStream.read();
-	        	if (command != 59) {
+	        	if (command != 59){
 	        		array += (char) command;
 	        	}
 	        	else {
 	        		System.out.println(array);
+              processCommand(array);
 	        		array = "";
 	        	}
-	        	if (command == EXIT_CMD)
-	        	{	
+	        	if (command == EXIT_CMD) {	
 	        		System.out.println("finish process");
 	        		break;
 	        	}
@@ -56,25 +55,7 @@ public class ProcessConnectionThread implements Runnable{
 	 * Process the command from client
 	 * @param command the command code
 	 */
-	private void processCommand(int command) {
-		try {
-			Robot robot = new Robot();
-			switch (command) {
-	    	case KEY_RIGHT:
-	    		robot.keyPress(KeyEvent.VK_RIGHT);
-	    		System.out.println("Right");
-	    		// release the key after it is pressed. Otherwise the event just keeps getting trigged	    		
-	    		robot.keyRelease(KeyEvent.VK_RIGHT);
-	    		break;
-	    	case KEY_LEFT:
-	    		robot.keyPress(KeyEvent.VK_LEFT);
-	    		System.out.println("Left");
-	    		// release the key after it is pressed. Otherwise the event just keeps getting trigged	    		
-	    		robot.keyRelease(KeyEvent.VK_LEFT);
-	    		break;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	private void processCommand(String command) {
+    RemoteBluetoothServer.game.sendCommandToPlayer(command);
 	}
 }
