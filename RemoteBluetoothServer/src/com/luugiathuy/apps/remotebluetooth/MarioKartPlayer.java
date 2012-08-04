@@ -29,17 +29,17 @@ public class MarioKartPlayer extends Player {
           player.keyRelease(LEFT);
         }
       }
-      if (Math.abs(delX) > xTHRES){
-        if (delX > 0){
-          System.out.println(BUTTONB);
-          player.keyPress(BUTTONB);
-          player.keyRelease(BUTTONB);
-        }else{
-          System.out.println(BUTTONA);
-          player.keyPress(BUTTONA);
-          player.keyRelease(BUTTONA);
-        }
-      }
+      //if (Math.abs(delX) > xTHRES){
+        //if (delX > 0){
+          //System.out.println(BUTTONB);
+          //player.keyPress(BUTTONB);
+          //player.keyRelease(BUTTONB);
+        //}else{
+          //System.out.println(BUTTONA);
+          //player.keyPress(BUTTONA);
+          //player.keyRelease(BUTTONA);
+        //}
+      //}
 			//if (Math.abs(delZ) > zTHRES) {
 				//if (delZ > 0) {
 					//if (Math.abs(delX) > xTHRES) {
