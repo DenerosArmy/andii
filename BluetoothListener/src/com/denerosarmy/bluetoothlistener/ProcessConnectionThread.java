@@ -1,7 +1,5 @@
 package com.denerosarmy.bluetoothlistener;
 
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.io.InputStream;
 
 import javax.microedition.io.StreamConnection;
@@ -15,8 +13,7 @@ public class ProcessConnectionThread implements Runnable{
 	private static final int KEY_RIGHT = 1;
 	private static final int KEY_LEFT = 2;
 	
-	public ProcessConnectionThread(StreamConnection connection)
-	{
+	public ProcessConnectionThread(StreamConnection connection) {
 		mConnection = connection;
 	}
 	
@@ -25,14 +22,10 @@ public class ProcessConnectionThread implements Runnable{
 		try {
 			// prepare to receive data
 			InputStream inputStream = mConnection.openInputStream();
-	        
 			System.out.println("waiting for input");
-
 			while (true) {
 				int command = inputStream.read();
-	        	
-				if (command == EXIT_CMD)
-				{	
+				if (command == EXIT_CMD) {	
 					System.out.println("finish process");
 					break;
 				}
