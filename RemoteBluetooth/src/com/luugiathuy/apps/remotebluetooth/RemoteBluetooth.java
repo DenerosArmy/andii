@@ -134,34 +134,34 @@ public class RemoteBluetooth extends Activity implements SensorEventListener {
 	
 	 
     public void pressA(View view) {
-    	writeShit(mBluetoothAdapter.getAddress() + ",a");
+    	writeShit(mBluetoothAdapter.getAddress() + ",a;");
     	Log.d("lol","lolol sent a");
     	v.vibrate(100);
     }
     
     public void pressB(View view) {
-    	writeShit(mBluetoothAdapter.getAddress() + ",b");
+    	writeShit(mBluetoothAdapter.getAddress() + ",b;");
     	Log.d("lol","lolol sent b");
     	v.vibrate(100);
 
     }
 
     public void pressRight(View view) {
-    	writeShit(mBluetoothAdapter.getAddress() + ",right");
+    	writeShit(mBluetoothAdapter.getAddress() + ",right;");
     	Log.d("lol","lolol sent right");
     	v.vibrate(100);
 
     }
 
     public void pressDown(View view) {
-    	writeShit(mBluetoothAdapter.getAddress() + ",down");
+    	writeShit(mBluetoothAdapter.getAddress() + ",down;");
     	Log.d("lol","lolol sent down");
     	v.vibrate(100);
 
     }
 
     public void pressLeft(View view) {
-    	writeShit(mBluetoothAdapter.getAddress() + ",left");
+    	writeShit(mBluetoothAdapter.getAddress() + ",left;");
     	Log.d("lol","lolol sent left");
     	v.vibrate(100);
 
@@ -326,14 +326,15 @@ private final void setStatus(CharSequence subTitle) {
 	
 	
 	public void writeShit(String s) {
-		ConnectedThread r;
+		mCommandService.write(s.getBytes());
+		/*ConnectedThread r;
         // Synchronize a copy of the ConnectedThread
         synchronized (this) {
             if (mState != STATE_CONNECTED) return;
             r = mConnectedThread;
         }
         // Perform the write unsynchronized
-        r.write(s.getBytes());
+        r.write(s.getBytes());*/
 	}
 	
 	@Override
@@ -355,7 +356,7 @@ private final void setStatus(CharSequence subTitle) {
 				return;
 			}
 			
-			String sendString = mBluetoothAdapter.getAddress() + " " + event.values[0] + "," + event.values[1] + "," + event.values[2] + ";";
+			String sendString = mBluetoothAdapter.getAddress() + " " + event.values[0] + "," + event.values[1] + "," + event.values[2] + "@";
 			
 			Log.d("asdf",sendString);
 						
