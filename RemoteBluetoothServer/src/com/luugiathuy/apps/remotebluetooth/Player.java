@@ -17,8 +17,10 @@ public abstract class Player {
   protected static final int[] CONFIG3 = {KeyEvent.VK_T,KeyEvent.VK_Y,KeyEvent.VK_U,KeyEvent.VK_I,KeyEvent.VK_O,KeyEvent.VK_P,KeyEvent.VK_N};
   protected static final int[] CONFIG4 = {KeyEvent.VK_V,KeyEvent.VK_D,KeyEvent.VK_F,KeyEvent.VK_G,KeyEvent.VK_H,KeyEvent.VK_J,KeyEvent.VK_K};
   protected static final int[] CONFIGX = {KeyEvent.VK_V,KeyEvent.VK_D,KeyEvent.VK_F,KeyEvent.VK_G,KeyEvent.VK_H,KeyEvent.VK_J,KeyEvent.VK_K};
+  protected int[] config;
 	protected String bid;
 	protected String name;
+  protected int playerNum;
 	protected float gyro_offsetX;
 	protected float gyro_offsetY;
 	protected float gyro_offsetZ;
@@ -31,22 +33,21 @@ public abstract class Player {
 
   public Player(String bid, String name, int playerNum) throws AWTException{
     this.player = new Robot();
-    int[] config;
     switch(playerNum){
       case 1:
-        config = CONFIG1;
+        this.config = CONFIG1;
         break;
       case 2:
-        config = CONFIG2;
+        this.config = CONFIG2;
         break;
       case 3:
-        config = CONFIG3;
+        this.config = CONFIG3;
         break;
       case 4:
-        config = CONFIG4;
+        this.config = CONFIG4;
         break;
       default:
-        config = CONFIGX;
+        this.config = CONFIGX;
         break;
     }
     this.UP = config[0];
@@ -58,6 +59,7 @@ public abstract class Player {
     this.START = config[6];
     this.bid = bid;
     this.name = name;
+    this.playerNum = playerNum;
   }
 
   protected void setGyroOffset(float offsetX, float offsetY, float offsetZ){
@@ -74,7 +76,23 @@ public abstract class Player {
     acclCallb = true;
   }
 
-  protected void pressButton(int key){
+  protected void pressButton(String key){
+    String key;
+    if (key.equals("up")){
+      key = UP;
+    }else if (key.equals("down")){
+      key = DOWN;
+    }else if (key.equals("left")){
+      key = LEFT;
+    }else if (key.equals("right")){
+      key = RIGHT;
+    }else if (key.equals("buttona")){
+      key = BUTTONA;
+    }else if (key.equals("buttonb")){
+      key = BUTTONB;
+    }else if (key.equals("start")){
+      key = START;
+    }
     player.keyPress(key);
     player.keyRelease(key);
   }
