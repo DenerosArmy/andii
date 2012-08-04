@@ -45,7 +45,7 @@ public class Game{
     getPlayerByID(commands[0]).setAcclOffset(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]));
   }
 
-  protected void sendButtonPressToPlayer(String command){
+  protected void sendButtonPressToPlayer(String command) throws AWTException{
     String[] commands = command.split(",");
     if (!players.containsKey(commands[0])){
       addPlayer(commands[0] + ",derp");
@@ -53,18 +53,20 @@ public class Game{
     getPlayerByID(commands[0]).pressButton(Integer.parseInt(commands[1]));
   }
 
-  protected void sendUpdateGyroToPlayer(String command){
+  protected void sendUpdateGyroToPlayer(String command) throws AWTException {
     String[] commands = command.split(",");
     if (!players.containsKey(commands[0])){
       addPlayer(commands[0] + ",derp");
+      getPlayerByID(commands[0]).setGyroOffset(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]));
     }
     getPlayerByID(commands[0]).updateGyro(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]));
   }
 
-  protected void sendUpdateAcclToPlayer(String command){
+  protected void sendUpdateAcclToPlayer(String command)throws AWTException{
     String[] commands = command.split(",");
     if (!players.containsKey(commands[0])){
       addPlayer(commands[0] + ",derp");
+      getPlayerByID(commands[0]).setAcclOffset(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]));
     }
     getPlayerByID(commands[0]).updateAccl(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]));
   }

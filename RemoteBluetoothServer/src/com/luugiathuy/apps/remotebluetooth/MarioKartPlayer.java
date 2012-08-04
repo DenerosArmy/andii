@@ -12,12 +12,19 @@ public class MarioKartPlayer extends Player {
   }
 
 	protected void updateGyro(float newX, float newY, float newZ) {
+		System.out.println("HERE");
     if (gyroCallb){
+		System.out.println("HERE1");
+
 	    float delX = newX-gyro_offsetX;
 	    float delY = newY-gyro_offsetY;
 	    float delZ = newZ-gyro_offsetZ;
       if (Math.abs(delY) > yTHRES){
+  		System.out.println("HERE2");
+
         if (delY > 0){
+    		System.out.println("HERE3");
+
           System.out.println(RIGHT);
           player.keyPress(RIGHT);
           player.keyRelease(RIGHT);
