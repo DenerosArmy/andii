@@ -50,7 +50,7 @@ public class Game{
     if (!players.containsKey(commands[0])){
       addPlayer(commands[0] + ",derp");
     }
-    getPlayerByID(commands[0]).pressButton(Integer.parseInt(commands[1]));
+    getPlayerByID(commands[0]).pressButton(commands[1]);
   }
 
   protected void sendUpdateGyroToPlayer(String command) throws AWTException {
