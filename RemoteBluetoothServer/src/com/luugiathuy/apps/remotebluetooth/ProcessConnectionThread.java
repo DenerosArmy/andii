@@ -14,6 +14,12 @@ public class ProcessConnectionThread implements Runnable{
 	private static final int EXIT_CMD = -1;
 	private static final int KEY_RIGHT = 1;
 	private static final int KEY_LEFT = 2;
+	private static final int BUTTON = 59;
+	private static final int ACC = 58;
+	private static final int GYRO = 38;
+	private static final int SYNCGYRO = 63;
+	private static final int SYNCACC = 35;
+	
 	
 	public ProcessConnectionThread(StreamConnection connection){
 		mConnection = connection;
@@ -31,20 +37,40 @@ public class ProcessConnectionThread implements Runnable{
 	        
 	        while (true) {
 	        	int command = inputStream.read();
-	        	if (command != 59){
-	        		array += (char) command;
-	        	}
-	        	else {
-	        		System.out.println(array);
-              processCommand(array);
+	        	if (command == BUTTON) {
+	        		//ButtonStuff here
+	        		System.out.println(" BUTTON PRESS " + array);
 	        		array = "";
 	        	}
-	        	if (command == EXIT_CMD) {	
+	        	else if (command == ACC) {
+	        		//Acc stuff here
+	        		System.out.println(" Acc input " + array);
+	        		array = "";
+	        	}
+	        	else if (command == GYRO) {
+	        		//Gyro stuff here 
+	        		System.out.println(" Gyro input " + array);
+	        		array = "";
+	        	}
+	        	else if (command == SYNCGYRO){
+	        		//Sync Gyro stuff here 
+	        		System.out.println(" Sync Gyro input " + array);
+	        		array = "";
+	        		
+	        	}
+	        	else if (command == SYNCACC){ 
+	        		//Sync Acc stuff here 
+	        		System.out.println(" Sync Acc input " + array);
+	        		array = "";
+	        	}
+	        	else if (command == EXIT_CMD) {	
 	        		System.out.println("finish process");
 	        		break;
 	        	}
+	        	else { 
+	        		array += (char) command;
+	        	}
 	        	
-	        	processCommand(command);
         	}
         } catch (Exception e) {
     		e.printStackTrace();
