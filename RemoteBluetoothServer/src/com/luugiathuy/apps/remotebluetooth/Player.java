@@ -110,7 +110,7 @@ public abstract class Player {
       player.keyPress(this.lastKey);
     }else{
       this.nonHoldCount++;
-      if (this.nonHoldCount > 5){
+      if (this.nonHoldCount > 100){
         this.nonHoldCount = 0;
         player.keyRelease(this.lastKey);
       }
