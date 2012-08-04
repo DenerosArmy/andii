@@ -8,6 +8,7 @@ public class Game{
   
   private String gamename;
   private Hashtable players;
+  private int currPlayer = 1;
 
   public Game(String gamename){
     this.gamename = gamename;
@@ -18,16 +19,39 @@ public class Game{
     return (Player) players.get(bid);
   }
 
-  protected void addPlayer(String bid, String name, float offsetX, float offsetY, float offsetZ) throws AWTException {
-    if (gamename.equals("MarioKart")){
-      players.put(bid, new MarioKartPlayer(bid, name, offsetX, offsetY, offsetZ));
+  protected void addPlayer(String command) throws AWTException {
+    String[] pInfo = command.split(",");
+    if (currPlayer < 5){
+      if (gamename.equals("MarioKart")){
+        players.put(pInfo[0], new MarioKartPlayer(pInfo[0], pInfo[1], currPlayer++));
+      }
     }
   }
 
-  // bid,x,y,z,buttons
-  protected void sendCommandToPlayer(String str) {
-    String[] commands = str.split(",");
-    getPlayerByID(commands[0]).issueCommand(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]), Arrays.copyOfRange(commands, 4, commands.length));
+  protected void setPlayerGyro(String command){
+    String[] commands = command.split(",");
+    getPlayerByID(commands[0]).setGyroOffset(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]));
   }
+
+  protected void setPlayerAccl(String command){
+    String[] commands = command.split(",");
+    getPlayerByID(commands[0]).setAcclOffset(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]));
+  }
+
+  protected void sendButtonPressToPlayer(String command){
+    String[] commands = command.split(",");
+    getPlayerByID(commands[0]).pressButton(Integer.parseInt(commands[1]));
+  }
+
+  protected void sendUpdateGyroToPlayer(String command){
+    String[] commands = command.split(",");
+    getPlayerByID(commands[0]).updateGyro(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]));
+  }
+
+  protected void sendUpdateAcclToPlayer(String command){
+    String[] commands = command.split(",");
+    getPlayerByID(commands[0]).updateAccl(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]));
+  }
+
 }
 

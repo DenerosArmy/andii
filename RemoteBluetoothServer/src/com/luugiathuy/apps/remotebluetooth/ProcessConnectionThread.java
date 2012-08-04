@@ -40,27 +40,39 @@ public class ProcessConnectionThread implements Runnable{
 	        	if (command == BUTTON) {
 	        		//ButtonStuff here
 	        		System.out.println(" BUTTON PRESS " + array);
+              RemoteBluetoothServer.game.sendButtonPressToPlayer(command);
 	        		array = "";
 	        	}
 	        	else if (command == ACC) {
 	        		//Acc stuff here
 	        		System.out.println(" Acc input " + array);
+              RemoteBluetoothServer.game.sendUpdateAcclToPlayer(command);
 	        		array = "";
 	        	}
 	        	else if (command == GYRO) {
 	        		//Gyro stuff here 
 	        		System.out.println(" Gyro input " + array);
+              RemoteBluetoothServer.game.sendUpdateGyroToPlayer(command);
 	        		array = "";
+	        	}
+	        	else if (command == NEWPLAYER){
+	        		//New player stuff here 
+	        		System.out.println(" New player input " + array);
+              RemoteBluetoothServer.game.addPlayer(command);
+	        		array = "";
+	        		
 	        	}
 	        	else if (command == SYNCGYRO){
 	        		//Sync Gyro stuff here 
 	        		System.out.println(" Sync Gyro input " + array);
+              RemoteBluetoothServer.game.setGyroOffset(command);
 	        		array = "";
 	        		
 	        	}
 	        	else if (command == SYNCACC){ 
 	        		//Sync Acc stuff here 
 	        		System.out.println(" Sync Acc input " + array);
+              RemoteBluetoothServer.game.setAcclOffset(command);
 	        		array = "";
 	        	}
 	        	else if (command == EXIT_CMD) {	
@@ -75,13 +87,5 @@ public class ProcessConnectionThread implements Runnable{
         } catch (Exception e) {
     		e.printStackTrace();
     	}
-	}
-	
-	/**
-	 * Process the command from client
-	 * @param command the command code
-	 */
-	private void processCommand(String command) {
-    RemoteBluetoothServer.game.sendCommandToPlayer(command);
 	}
 }

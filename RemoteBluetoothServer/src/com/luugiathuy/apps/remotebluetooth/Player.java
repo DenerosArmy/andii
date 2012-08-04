@@ -5,27 +5,28 @@ import java.awt.AWTException;
 import java.awt.Robot;
 
 public abstract class Player {
-  protected static final int UP;
-  protected static final int DOWN;
-  protected static final int LEFT;
-  protected static final int RIGHT;
-  protected static final int BUTTONA;
-  protected static final int BUTTONB;
-  protected static final int START;
+  protected int UP;
+  protected int DOWN;
+  protected int LEFT;
+  protected int RIGHT;
+  protected int BUTTONA;
+  protected int BUTTONB;
+  protected int START;
   protected static final int[] CONFIG1 = {KeyEvent.VK_1,KeyEvent.VK_2,KeyEvent.VK_3,KeyEvent.VK_4,KeyEvent.VK_5,KeyEvent.VK_6,KeyEvent.VK_7};
   protected static final int[] CONFIG2 = {KeyEvent.VK_8,KeyEvent.VK_9,KeyEvent.VK_0,KeyEvent.VK_Q,KeyEvent.VK_W,KeyEvent.VK_E,KeyEvent.VK_M};
   protected static final int[] CONFIG3 = {KeyEvent.VK_T,KeyEvent.VK_Y,KeyEvent.VK_U,KeyEvent.VK_I,KeyEvent.VK_O,KeyEvent.VK_P,KeyEvent.VK_N};
   protected static final int[] CONFIG4 = {KeyEvent.VK_V,KeyEvent.VK_D,KeyEvent.VK_F,KeyEvent.VK_G,KeyEvent.VK_H,KeyEvent.VK_J,KeyEvent.VK_K};
+  protected static final int[] CONFIGX = {KeyEvent.VK_V,KeyEvent.VK_D,KeyEvent.VK_F,KeyEvent.VK_G,KeyEvent.VK_H,KeyEvent.VK_J,KeyEvent.VK_K};
 	protected String bid;
 	protected String name;
-	private float gyro_offsetX;
-	private float gyro_offsetY;
-	private float gyro_offsetZ;
-  private float accl_offsetX;
-	private float accl_offsetY;
-	private float accl_offsetZ;
-  private boolean gyroCallb = false;
-  private boolean acclCallb = false;
+	protected float gyro_offsetX;
+	protected float gyro_offsetY;
+	protected float gyro_offsetZ;
+  protected float accl_offsetX;
+	protected float accl_offsetY;
+	protected float accl_offsetZ;
+  protected boolean gyroCallb = false;
+  protected boolean acclCallb = false;
   protected Robot player;
 
   public Player(String bid, String name, int playerNum) throws AWTException{
@@ -43,6 +44,9 @@ public abstract class Player {
         break;
       case 4:
         config = CONFIG4;
+        break;
+      default:
+        config = CONFIGX;
         break;
     }
     this.UP = config[0];
