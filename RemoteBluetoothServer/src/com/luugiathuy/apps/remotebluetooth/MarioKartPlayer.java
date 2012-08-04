@@ -12,12 +12,7 @@ public class MarioKartPlayer extends Player {
   }
 
 	protected void updateAccl(float newX, float newY, float newZ) {
-    System.out.println("asdf");
-		
 		if (acclCallb){
-    	
-    	System.out.println("ghij");
-
 	    float delX = newX-accl_offsetX;
 	    float delY = newY-accl_offsetY;
 	    float delZ = newZ-accl_offsetZ;
