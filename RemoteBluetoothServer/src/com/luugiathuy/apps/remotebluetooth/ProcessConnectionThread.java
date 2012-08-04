@@ -19,6 +19,7 @@ public class ProcessConnectionThread implements Runnable{
 	private static final int GYRO = 38;
 	private static final int SYNCGYRO = 63;
 	private static final int SYNCACC = 35;
+	private static final int NEWPLAYER = 36;
 	
 	
 	public ProcessConnectionThread(StreamConnection connection){
