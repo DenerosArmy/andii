@@ -76,6 +76,7 @@ public abstract class Player {
     this.accl_offsetX = accl_offsetX;
     this.accl_offsetY = accl_offsetY;
     this.accl_offsetZ = accl_offsetZ;
+    System.out.println("acclset");
     acclCallb = true;
   }
 

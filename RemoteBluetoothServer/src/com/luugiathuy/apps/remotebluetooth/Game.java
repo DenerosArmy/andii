@@ -39,6 +39,7 @@ public class Game{
 
   protected void setPlayerAccl(String command) throws AWTException {
     String[] commands = command.split(",");
+    System.out.println("setaccl: " + command);
     if (!players.containsKey(commands[0])){
       addPlayer(commands[0] + ",derp");
     }
