@@ -15,7 +15,7 @@ public class ProcessConnectionThread implements Runnable{
 	private static final int KEY_RIGHT = 1;
 	private static final int KEY_LEFT = 2;
 	private static final int BUTTON = 59;
-	private static final int ACC = 58;
+	private static final int ACC = 64;
 	private static final int GYRO = 38;
 	private static final int SYNCGYRO = 63;
 	private static final int SYNCACC = 35;
@@ -40,39 +40,39 @@ public class ProcessConnectionThread implements Runnable{
 	        	if (command == BUTTON) {
 	        		//ButtonStuff here
 	        		System.out.println(" BUTTON PRESS " + array);
-              RemoteBluetoothServer.game.sendButtonPressToPlayer(command);
+              RemoteBluetoothServer.game.sendButtonPressToPlayer(array);
 	        		array = "";
 	        	}
 	        	else if (command == ACC) {
 	        		//Acc stuff here
 	        		System.out.println(" Acc input " + array);
-              RemoteBluetoothServer.game.sendUpdateAcclToPlayer(command);
+              RemoteBluetoothServer.game.sendUpdateAcclToPlayer(array);
 	        		array = "";
 	        	}
 	        	else if (command == GYRO) {
 	        		//Gyro stuff here 
 	        		System.out.println(" Gyro input " + array);
-              RemoteBluetoothServer.game.sendUpdateGyroToPlayer(command);
+              RemoteBluetoothServer.game.sendUpdateGyroToPlayer(array);
 	        		array = "";
 	        	}
 	        	else if (command == NEWPLAYER){
 	        		//New player stuff here 
 	        		System.out.println(" New player input " + array);
-              RemoteBluetoothServer.game.addPlayer(command);
+              RemoteBluetoothServer.game.addPlayer(array);
 	        		array = "";
 	        		
 	        	}
 	        	else if (command == SYNCGYRO){
 	        		//Sync Gyro stuff here 
 	        		System.out.println(" Sync Gyro input " + array);
-              RemoteBluetoothServer.game.setGyroOffset(command);
+              RemoteBluetoothServer.game.setGyroOffset(array);
 	        		array = "";
 	        		
 	        	}
 	        	else if (command == SYNCACC){ 
 	        		//Sync Acc stuff here 
 	        		System.out.println(" Sync Acc input " + array);
-              RemoteBluetoothServer.game.setAcclOffset(command);
+              RemoteBluetoothServer.game.setAcclOffset(array);
 	        		array = "";
 	        	}
 	        	else if (command == EXIT_CMD) {	
