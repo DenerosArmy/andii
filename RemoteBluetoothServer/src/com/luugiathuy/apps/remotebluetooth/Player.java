@@ -77,23 +77,24 @@ public abstract class Player {
   }
 
   protected void pressButton(String key){
+    int keyi = 0;
     if (key.equals("up")){
-      key = UP;
+      keyi = UP;
     }else if (key.equals("down")){
-      key = DOWN;
+      keyi = DOWN;
     }else if (key.equals("left")){
-      key = LEFT;
+      keyi = LEFT;
     }else if (key.equals("right")){
-      key = RIGHT;
+      keyi = RIGHT;
     }else if (key.equals("buttona")){
-      key = BUTTONA;
+      keyi = BUTTONA;
     }else if (key.equals("buttonb")){
-      key = BUTTONB;
+      keyi = BUTTONB;
     }else if (key.equals("start")){
-      key = START;
+      keyi = START;
     }
-    player.keyPress(key);
-    player.keyRelease(key);
+    player.keyPress(keyi);
+    player.keyRelease(keyi);
   }
 
 	protected void updateGyro(float newX, float newY, float newZ){}
