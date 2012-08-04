@@ -30,11 +30,17 @@ public class Game{
 
   protected void setPlayerGyro(String command){
     String[] commands = command.split(",");
+    if (!players.containsKey(commands[0])){
+      addPlayer(commands[0], "derp");
+    }
     getPlayerByID(commands[0]).setGyroOffset(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]));
   }
 
   protected void setPlayerAccl(String command){
     String[] commands = command.split(",");
+    if (!players.containsKey(commands[0])){
+      addPlayer(commands[0], "derp");
+    }
     getPlayerByID(commands[0]).setAcclOffset(Float.parseFloat(commands[1]), Float.parseFloat(commands[2]), Float.parseFloat(commands[3]));
   }
 
