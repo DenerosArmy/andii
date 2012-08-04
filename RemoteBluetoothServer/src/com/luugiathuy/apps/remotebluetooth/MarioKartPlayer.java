@@ -33,38 +33,18 @@ public class MarioKartPlayer extends Player {
           player.keyPress(LEFT);
         }
       }
-      if (Math.abs(delX) > xTHRES){
-        if (delX > 0){
-          System.out.println(BUTTONB);
-          player.keyRelease(BUTTONA);
-
-          player.keyPress(BUTTONB);
-        }else{
-          System.out.println(BUTTONA);
-          player.keyRelease(BUTTONB);
-
-          player.keyPress(BUTTONA);
-          
-        }
-      }
-			//if (Math.abs(delZ) > zTHRES) {
-				//if (delZ > 0) {
-					//if (Math.abs(delX) > xTHRES) {
-						//if (delX > 0) {
-							//if (Math.abs(delY) > yTHRES){
-								//if (delY > 0) {
-											//System.out.println(RIGHT);
-											//player.keyPress(RIGHT);
-									//} else {
-											//System.out.println(LEFT);
-											//player.keyPress(LEFT);
-										//}
-									//}
-						//}
-					//}
-				//}
-	    //}
-	  }
+      //if (Math.abs(delX) > xTHRES){
+        //if (delX > 0){
+          //System.out.println(BUTTONB);
+          //player.keyPress(BUTTONB);
+          //player.keyRelease(BUTTONB);
+        //}else{
+          //System.out.println(BUTTONA);
+          //player.keyPress(BUTTONA);
+          //player.keyRelease(BUTTONA);
+        //}
+      //}
   }
 	
+}
 }
