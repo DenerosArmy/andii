@@ -3,9 +3,9 @@ import java.util.*;
 import java.awt.AWTException;
 
 public class MarioKartPlayer extends Player {
-	private static final float xTHRES = (float) 2;
-	private static final float yTHRES = (float) 2;
-	private static final float zTHRES = (float) 2;
+	private static final float xTHRES = (float) 1;
+	private static final float yTHRES = (float) 1;
+	private static final float zTHRES = (float) 1;
 	
 	public MarioKartPlayer(String bid, String name, int playerNum) throws AWTException {
       super(bid, name, playerNum);
