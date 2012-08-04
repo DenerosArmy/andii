@@ -91,7 +91,7 @@ public abstract class Player {
       player.keyPress(BUTTONA);
     }else if (key.equals("buttonb")){
       player.keyPress(BUTTONB);
-    }else if (key.equals("start")){
+    }else if (key.equals("buttonz")){
       player.keyPress(BUTTONZ);
     }else if (key.equals("rup")){
       player.keyRelease(UP);
@@ -105,7 +105,7 @@ public abstract class Player {
       player.keyRelease(BUTTONA);
     }else if (key.equals("rbuttonb")){
       player.keyRelease(BUTTONB);
-    }else if (key.equals("rstart")){
+    }else if (key.equals("rbuttonz")){
       player.keyRelease(BUTTONZ);
     }
   }
