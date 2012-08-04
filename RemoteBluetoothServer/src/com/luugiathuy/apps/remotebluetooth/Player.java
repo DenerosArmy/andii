@@ -32,8 +32,8 @@ public abstract class Player {
   protected boolean acclCallb = false;
   protected Robot player;
   protected Thread thread;
-  protected int nonHoldCount = 0;
-  protected int lastKey = 0;
+  protected int nonHoldCount;
+  protected int lastKey;
 
   public Player(String bid, String name, int playerNum) throws AWTException{
     this.player = new Robot();
@@ -65,6 +65,8 @@ public abstract class Player {
     this.name = name;
     this.playerNum = playerNum;
     this.thread = new Thread();
+    this.nonHoldCount = 0;
+    this.lastKey = 0;
   }
 
   protected void setGyroOffset(float offsetX, float offsetY, float offsetZ){
@@ -86,31 +88,31 @@ public abstract class Player {
 
   protected void pressButton(String key){
     if (key.equals("up")){
-      lastKey = UP;
-      player.keyPress(lastKey);
+      this.lastKey = UP;
+      player.keyPress(this.lastKey);
     }else if (key.equals("down")){
-      lastKey = DOWN;
-      player.keyPress(lastKey);
+      this.lastKey = DOWN;
+      player.keyPress(this.lastKey);
     }else if (key.equals("left")){
-      lastKey = LEFT;
-      player.keyPress(lastKey);
+      this.lastKey = LEFT;
+      player.keyPress(this.lastKey);
     }else if (key.equals("right")){
-      lastKey = RIGHT;
-      player.keyPress(lastKey);
+      this.lastKey = RIGHT;
+      player.keyPress(this.lastKey);
     }else if (key.equals("buttona")){
-      lastKey = BUTTONA;
-      player.keyPress(lastKey);
+      this.lastKey = BUTTONA;
+      player.keyPress(this.lastKey);
     }else if (key.equals("buttonb")){
-      lastKey = BUTTONB;
-      player.keyPress(lastKey);
+      this.lastKey = BUTTONB;
+      player.keyPress(this.lastKey);
     }else if (key.equals("start")){
-      lastKey = START;
-      player.keyPress(lastKey);
+      this.lastKey = START;
+      player.keyPress(this.lastKey);
     }else{
-      nonHoldCount++;
-      if (nonHoldCount > 5){
-        nonHoldCount = 0;
-        player.keyRelease(lastKey);
+      this.nonHoldCount++;
+      if (this.nonHoldCount > 5){
+        this.nonHoldCount = 0;
+        player.keyRelease(this.lastKey);
       }
     }
   }
