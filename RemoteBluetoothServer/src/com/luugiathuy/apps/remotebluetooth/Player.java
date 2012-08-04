@@ -33,7 +33,7 @@ public abstract class Player {
   protected Robot player;
   protected Thread thread;
   protected int nonHoldCount = 0;
-  protected int lastKey = "None";
+  protected int lastKey = 0;
 
   public Player(String bid, String name, int playerNum) throws AWTException{
     this.player = new Robot();
