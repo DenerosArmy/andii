@@ -3,7 +3,7 @@ package com.denerosarmy.bluetoothlistener;
 import java.io.InputStream;
 
 import javax.microedition.io.StreamConnection;
-
+import java.utils.ArrayList; 
 public class ProcessConnectionThread implements Runnable{
 
 	private StreamConnection mConnection;
@@ -16,16 +16,23 @@ public class ProcessConnectionThread implements Runnable{
 	public ProcessConnectionThread(StreamConnection connection) {
 		mConnection = connection;
 	}
-	
 	@Override
 	public void run() {
 		try {
 			// prepare to receive data
 			InputStream inputStream = mConnection.openInputStream();
 			System.out.println("waiting for input");
+			String array = "";
 			while (true) {
 				int command = inputStream.read();
-				if (command == EXIT_CMD) {	
+				if (command != 59) {  	
+					String array += (char) command;
+				}
+				else { 
+					System.out.println(array);
+					array = "";
+				}
+        if (command == EXIT_CMD) {	
 					System.out.println("finish process");
 					break;
 				}
