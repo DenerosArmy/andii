@@ -44,6 +44,15 @@ public class ProcessConnectionThread implements Runnable{
               RemoteBluetoothServer.game.sendButtonPressToPlayer(array);
 	        		array = "";
 	        	}
+	        	
+	        	else if (command == NEWPLAYER){
+	        		//New player stuff here 
+	        		System.out.println(" New player input " + array);
+              RemoteBluetoothServer.game.addPlayer(array);
+	        		array = "";
+	        		
+	        	}
+	        	
 	        	else if (command == ACC) {
 	        		//Acc stuff here
 	        		System.out.println(" Acc input " + array);
@@ -56,24 +65,18 @@ public class ProcessConnectionThread implements Runnable{
               RemoteBluetoothServer.game.sendUpdateGyroToPlayer(array);
 	        		array = "";
 	        	}
-	        	else if (command == NEWPLAYER){
-	        		//New player stuff here 
-	        		System.out.println(" New player input " + array);
-              RemoteBluetoothServer.game.addPlayer(array);
-	        		array = "";
-	        		
-	        	}
+
 	        	else if (command == SYNCGYRO){
 	        		//Sync Gyro stuff here 
 	        		System.out.println(" Sync Gyro input " + array);
-              RemoteBluetoothServer.game.setGyroOffset(array);
+              RemoteBluetoothServer.game.setPlayerGyro(array);
 	        		array = "";
 	        		
 	        	}
 	        	else if (command == SYNCACC){ 
 	        		//Sync Acc stuff here 
 	        		System.out.println(" Sync Acc input " + array);
-              RemoteBluetoothServer.game.setAcclOffset(array);
+              RemoteBluetoothServer.game.setPlayerAccl(array);
 	        		array = "";
 	        	}
 	        	else if (command == EXIT_CMD) {	
