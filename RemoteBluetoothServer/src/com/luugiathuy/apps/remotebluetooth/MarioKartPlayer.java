@@ -11,20 +11,15 @@ public class MarioKartPlayer extends Player {
       super(bid, name, playerNum);
   }
 
-	protected void updateGyro(float newX, float newY, float newZ) {
-		System.out.println("HERE");
-    if (gyroCallb){
-		System.out.println("HERE1");
+	protected void updateAccl(float newX, float newY, float newZ) {
+    if (acclCallb){
 
-	    float delX = newX-gyro_offsetX;
-	    float delY = newY-gyro_offsetY;
-	    float delZ = newZ-gyro_offsetZ;
+	    float delX = newX-accl_offsetX;
+	    float delY = newY-accl_offsetY;
+	    float delZ = newZ-accl_offsetZ;
       if (Math.abs(delY) > yTHRES){
-  		System.out.println("HERE2");
 
         if (delY > 0){
-    		System.out.println("HERE3");
-
           System.out.println(RIGHT);
           player.keyPress(RIGHT);
           player.keyRelease(RIGHT);

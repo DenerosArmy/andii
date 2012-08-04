@@ -3,6 +3,7 @@ package com.luugiathuy.apps.remotebluetooth;
 import java.awt.event.KeyEvent;
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.lang.Thread;
 
 public abstract class Player {
   protected int UP;
@@ -30,6 +31,7 @@ public abstract class Player {
   protected boolean gyroCallb = false;
   protected boolean acclCallb = false;
   protected Robot player;
+  protected Thread thread;
 
   public Player(String bid, String name, int playerNum) throws AWTException{
     this.player = new Robot();
@@ -60,6 +62,7 @@ public abstract class Player {
     this.bid = bid;
     this.name = name;
     this.playerNum = playerNum;
+    this.thread = new Thread();
   }
 
   protected void setGyroOffset(float offsetX, float offsetY, float offsetZ){
