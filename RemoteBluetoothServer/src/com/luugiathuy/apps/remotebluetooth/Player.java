@@ -77,7 +77,6 @@ public abstract class Player {
   }
 
   protected void pressButton(String key){
-    String key;
     if (key.equals("up")){
       key = UP;
     }else if (key.equals("down")){
