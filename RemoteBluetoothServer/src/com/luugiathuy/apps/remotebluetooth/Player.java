@@ -32,6 +32,8 @@ public abstract class Player {
   protected boolean acclCallb = false;
   protected Robot player;
   protected Thread thread;
+  protected int nonHoldCount = 0;
+  protected int lastKey = "None";
 
   public Player(String bid, String name, int playerNum) throws AWTException{
     this.player = new Robot();
@@ -81,24 +83,34 @@ public abstract class Player {
   }
 
   protected void pressButton(String key){
-    int keyi = 0;
     if (key.equals("up")){
-      keyi = UP;
+      lastKey = UP;
+      player.keyPress(lastKey);
     }else if (key.equals("down")){
-      keyi = DOWN;
+      lastKey = DOWN;
+      player.keyPress(lastKey);
     }else if (key.equals("left")){
-      keyi = LEFT;
+      lastKey = LEFT;
+      player.keyPress(lastKey);
     }else if (key.equals("right")){
-      keyi = RIGHT;
+      lastKey = RIGHT;
+      player.keyPress(lastKey);
     }else if (key.equals("buttona")){
-      keyi = BUTTONA;
+      lastKey = BUTTONA;
+      player.keyPress(lastKey);
     }else if (key.equals("buttonb")){
-      keyi = BUTTONB;
+      lastKey = BUTTONB;
+      player.keyPress(lastKey);
     }else if (key.equals("start")){
-      keyi = START;
+      lastKey = START;
+      player.keyPress(lastKey);
+    }else{
+      nonHoldCount++;
+      if (nonHoldCount > 5){
+        nonHoldCount = 0;
+        player.keyRelease(lastKey);
+      }
     }
-    player.keyPress(keyi);
-    player.keyRelease(keyi);
   }
 
 	protected void updateGyro(float newX, float newY, float newZ){}
