@@ -75,7 +75,7 @@ public class ProcessConnectionThread implements Runnable{
 	        	}
 	        	else if (command == SYNCACC){ 
 	        		//Sync Acc stuff here 
-	        		System.out.println(" Sync Acc input " + array);
+	        		//System.out.println(" Sync Acc input " + array);
               RemoteBluetoothServer.game.setPlayerAccl(array);
 	        		array = "";
 	        	}
