@@ -12,6 +12,10 @@ public class FruitPlayer extends MousePlayer {
 	private static final int LEFTBOUND = 414;
 	private static final int BOTTOMBOUND = 706;
 	private static final int RIGHTBOUND =  1064;
+	private static final float xMUL = (float) 1;
+	private static final float yMUL = (float) 25;
+	private static final float zMUL = (float) 1;
+
 	public FruitPlayer(String bid, String name, int playerNum) throws AWTException {
 	      super(bid, name, playerNum);
 	  }	
@@ -21,6 +25,14 @@ public class FruitPlayer extends MousePlayer {
 			System.out.println(test.give());
 		}
 	}
+
+  protected void updateAccl(float newX, float newY, float newZ){
+    if (acclCallb){
+      mouseGlide(lastX, lastY, newX, newY);
+      this.lastX = newX;
+      this.lastY = newY;
+    }
+  }
 	
 	
 }

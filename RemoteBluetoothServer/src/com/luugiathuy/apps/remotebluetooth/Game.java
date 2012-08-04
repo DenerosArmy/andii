@@ -25,6 +25,9 @@ public class Game{
       if (gamename.equals("MarioKart")){
         players.put(pInfo[0], new MarioKartPlayer(pInfo[0], pInfo[1], currPlayer++));
       }
+      if (gamename.equals("FruitNinja")){
+        players.put(pInfo[0], new FruitPlayer(pInfo[0], pInfo[1], currPlayer++));
+      }
     }
   }
 
