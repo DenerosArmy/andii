@@ -12,7 +12,7 @@ public abstract class Player {
   protected int RIGHT;
   protected int BUTTONA;
   protected int BUTTONB;
-  protected int START;
+  protected int BUTTONZ;
   protected static final int[] CONFIG1 = {KeyEvent.VK_1,KeyEvent.VK_2,KeyEvent.VK_3,KeyEvent.VK_4,KeyEvent.VK_5,KeyEvent.VK_6,KeyEvent.VK_7};
   protected static final int[] CONFIG2 = {KeyEvent.VK_8,KeyEvent.VK_9,KeyEvent.VK_0,KeyEvent.VK_Q,KeyEvent.VK_W,KeyEvent.VK_E,KeyEvent.VK_M};
   protected static final int[] CONFIG3 = {KeyEvent.VK_T,KeyEvent.VK_Y,KeyEvent.VK_U,KeyEvent.VK_I,KeyEvent.VK_O,KeyEvent.VK_P,KeyEvent.VK_N};
@@ -57,7 +57,7 @@ public abstract class Player {
     this.RIGHT = config[3];
     this.BUTTONA = config[4];
     this.BUTTONB = config[5];
-    this.START = config[6];
+    this.BUTTONZ = config[6];
     this.bid = bid;
     this.name = name;
     this.playerNum = playerNum;
@@ -74,7 +74,6 @@ public abstract class Player {
     this.accl_offsetX = accl_offsetX;
     this.accl_offsetY = accl_offsetY;
     this.accl_offsetZ = accl_offsetZ;
-    System.out.println("acclset");
     acclCallb = true;
   }
   
@@ -92,7 +91,7 @@ public abstract class Player {
     }else if (key.equals("buttonb")){
       player.keyPress(BUTTONB);
     }else if (key.equals("start")){
-      player.keyPress(START);
+      player.keyPress(BUTTONZ);
     }else if (key.equals("rup")){
       player.keyRelease(UP);
     }else if (key.equals("rdown")){
@@ -106,7 +105,7 @@ public abstract class Player {
     }else if (key.equals("rbuttonb")){
       player.keyRelease(BUTTONB);
     }else if (key.equals("rstart")){
-      player.keyRelease(START);
+      player.keyRelease(BUTTONZ);
     }
   }
 
