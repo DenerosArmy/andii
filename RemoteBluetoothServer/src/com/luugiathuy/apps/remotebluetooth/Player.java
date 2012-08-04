@@ -31,9 +31,6 @@ public abstract class Player {
   protected boolean gyroCallb = false;
   protected boolean acclCallb = false;
   protected Robot player;
-  protected Thread thread;
-  protected int nonHoldCount;
-  protected int lastKey;
 
   public Player(String bid, String name, int playerNum) throws AWTException{
     this.player = new Robot();
@@ -64,9 +61,6 @@ public abstract class Player {
     this.bid = bid;
     this.name = name;
     this.playerNum = playerNum;
-    this.thread = new Thread();
-    this.nonHoldCount = 0;
-    this.lastKey = 0;
   }
 
   protected void setGyroOffset(float offsetX, float offsetY, float offsetZ){
@@ -84,36 +78,35 @@ public abstract class Player {
     acclCallb = true;
   }
   
-  public String previousKey = "";
-
   protected void pressButton(String key){
     if (key.equals("up")){
-      this.lastKey = UP;
-      player.keyPress(this.lastKey);
+      player.keyPress(UP);
     }else if (key.equals("down")){
-      this.lastKey = DOWN;
-      player.keyPress(this.lastKey);
+      player.keyPress(DOWN);
     }else if (key.equals("left")){
-      this.lastKey = LEFT;
-      player.keyPress(this.lastKey);
+      player.keyPress(LEFT);
     }else if (key.equals("right")){
-      this.lastKey = RIGHT;
-      player.keyPress(this.lastKey);
+      player.keyPress(RIGHT);
     }else if (key.equals("buttona")){
-      this.lastKey = BUTTONA;
-      player.keyPress(this.lastKey);
+      player.keyPress(BUTTONA);
     }else if (key.equals("buttonb")){
-      this.lastKey = BUTTONB;
-      player.keyPress(this.lastKey);
+      player.keyPress(BUTTONB);
     }else if (key.equals("start")){
-      this.lastKey = START;
-      player.keyPress(this.lastKey);
-    }else{
-      this.nonHoldCount++;
-      if (this.nonHoldCount > 100){
-        this.nonHoldCount = 0;
-        player.keyRelease(this.lastKey);
-      }
+      player.keyPress(START);
+    }else if (key.equals("rup")){
+      player.keyRelease(UP);
+    }else if (key.equals("rdown")){
+      player.keyRelease(DOWN);
+    }else if (key.equals("rleft")){
+      player.keyRelease(LEFT);
+    }else if (key.equals("rright")){
+      player.keyRelease(RIGHT);
+    }else if (key.equals("rbuttona")){
+      player.keyRelease(BUTTONA);
+    }else if (key.equals("rbuttonb")){
+      player.keyRelease(BUTTONB);
+    }else if (key.equals("rstart")){
+      player.keyRelease(START);
     }
   }
 
