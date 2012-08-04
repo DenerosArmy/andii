@@ -87,6 +87,7 @@ public abstract class Player {
   public String previousKey = "";
 
   protected void pressButton(String key){
+	  System.out.println("key: " + key);
     if (key.equals("up")){
       this.lastKey = UP;
       player.keyPress(this.lastKey);

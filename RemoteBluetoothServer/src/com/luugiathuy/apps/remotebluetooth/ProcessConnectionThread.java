@@ -55,7 +55,7 @@ public class ProcessConnectionThread implements Runnable{
 	        	
 	        	else if (command == ACC) {
 	        		//Acc stuff here
-	        		System.out.println(" Acc input " + array);
+	        		//System.out.println(" Acc input " + array);
               RemoteBluetoothServer.game.sendUpdateAcclToPlayer(array);
 	        		array = "";
 	        	}
