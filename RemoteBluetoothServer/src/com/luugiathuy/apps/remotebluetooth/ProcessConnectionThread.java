@@ -55,17 +55,18 @@ public class ProcessConnectionThread implements Runnable{
 	        	
 	        	else if (command == ACC) {
 	        		//Acc stuff here
-	        		//System.out.println(" Acc input " + array);
+	        		System.out.println(" Acc input " + array);
               RemoteBluetoothServer.game.sendUpdateAcclToPlayer(array);
 	        		array = "";
 	        	}
+	        	
 	        	else if (command == GYRO) {
 	        		//Gyro stuff here 
 	        		//System.out.println(" Gyro input " + array);
               RemoteBluetoothServer.game.sendUpdateGyroToPlayer(array);
 	        		array = "";
 	        	}
-
+				
 	        	else if (command == SYNCGYRO){
 	        		//Sync Gyro stuff here 
 	        		System.out.println(" Sync Gyro input " + array);
@@ -73,6 +74,7 @@ public class ProcessConnectionThread implements Runnable{
 	        		array = "";
 	        		
 	        	}
+	        	
 	        	else if (command == SYNCACC){ 
 	        		//Sync Acc stuff here 
 	        		System.out.println(" Sync Acc input " + array);
